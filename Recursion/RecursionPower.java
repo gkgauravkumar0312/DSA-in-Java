@@ -1,0 +1,32 @@
+public class RecursionPower {
+
+    // Print x to the power n
+    public static int power(int x, int n) {
+        if (n == 0) {
+            return 1;
+        }
+        int xnm1 = power(x, n - 1);
+        int xn = x * xnm1;
+        return xn;
+    }
+
+    // Print x to the power n (Optimized)
+    public static int optimizedPower(int x, int n) {
+        if (n == 0) {
+            return 1;
+        }
+        int halfPower = optimizedPower(x, n / 2);
+        int halfPowerSq = halfPower * halfPower;
+
+        if (n % 2 != 0) {
+            halfPowerSq = x * halfPowerSq;
+        }
+
+        return halfPowerSq;
+    }
+
+    public static void main(String args[]) {
+        System.out.println(power(2, 10));
+        System.out.println(optimizedPower(2, 10));
+    }
+}
